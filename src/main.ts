@@ -22,6 +22,7 @@ import {
   InsertNoteLinkModal,
   InsertNoteContentModal,
   OpenNoteModal,
+  InsertCitationAndMakeNoteModal,
 } from './modals';
 import { VaultExt } from './obsidian-extensions.d';
 import { CitationSettingTab, CitationsPluginSettings } from './settings';
@@ -176,6 +177,19 @@ export default class CitationPlugin extends Plugin {
       name: 'Insert Markdown citation',
       callback: () => {
         const modal = new InsertCitationModal(this.app, this);
+        modal.open();
+      },
+    });
+
+    this.addCommand({
+      id: 'insert-markdown-citation-and-make-literature-note',
+      name:
+        'Insert Markdown citation and make literature note if it does not exist',
+      callback: () => {
+        const modal = new InsertCitationAndMakeNoteModal(
+          this.app,
+          this
+        );
         modal.open();
       },
     });
